@@ -10,74 +10,64 @@
 </head>
 
 <body>
-    <div class="container text-center">
+    <div class="container text-center pt-5">
         <div><input type="text" id="result" disabled></div>
         <div><button type="button" class="btn btn-dark" data-type="numbers" data-number="1">1</button>
             <button type="button" class="btn btn-dark" data-type="numbers" data-number="2">2</button>
-            <button type="button" class="btn btn-dark" data-type="numbers" data-number="3">3</button></div>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="3">3</button>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number=".">,</button></div>
 
-        <div><button type="button" class="btn btn-dark" data-type="operator" data-operator="+">+</button>
-            <button type="button" class="btn btn-dark" data-type="operator" data-operator="-">-</button>
-            <button type="button" class="btn btn-dark" data-type="operator" data-operator="*">×</button>
-            <button type="button" class="btn btn-dark" data-type="operator" data-operator="=">=</button></div>
+        <div><button type="button" class="btn btn-dark" data-type="operator" data-operator="+" id="plus">+</button>
+            <button type="button" class="btn btn-dark" data-type="operator" data-operator="-" id="minus">-</button>
+            <button type="button" class="btn btn-dark" data-type="remove" data-remove="C" id="effacer">CE</button>
+            <button type="button" class="btn btn-dark" data-type="egal" data-operator="=" id="egal">=</button></div>
 
 
 
     </div>
 
     <script>
-        const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        //CHIFFRES
         const numbersButtons = document.querySelectorAll('button[data-type="numbers"]');
+        let myOperation;
 
         numbersButtons.forEach(element => {
             element.addEventListener('click', function () {
-                result.value = this.dataset.number
+                result.value += this.dataset.number
             })
         })
 
-        //need concatenation
-
+        //OPERATEURS/RESULTAT
         const operatorsButtons = document.querySelectorAll('button[data-type="operator"]');
+        console.log(operatorsButtons);
+
         operatorsButtons.forEach(element => {
             element.addEventListener('click', function () {
-                result.value = this.dataset.operator
+                //result.value va stacker la valeur de nb1, result.value='' la supprime de l'input
+                myOperation = parseFloat(result.value) + this.dataset.operator
+                result.value = ''
+                console.log(myOperation)
             })
         })
-        const operators = []
-        switch (operators) {
-            // case 'plus':
-            // a + b
-            // break;
-            // case 'minus':
-            //     a - b
-            // case 'multiply'
-            // a * b;
-            // case 'divide'
-            // a / b;
-            // case 'modulo'
-            // a % b 
 
-        }
 
-        function plus(a, b) {
-            return a + b
-        }
+        egal.addEventListener('click', function () {
 
-        function minus(a, b) {
-            return a - b
-        }
+            myOperation = myOperation + result.value;
+            myResult = eval(myOperation);
+            result.value = myResult
+        })
 
-        function multiply(a,b) {
-            return a * b
-        }
+        //     function plus (a,b){
+        //     a + b
 
-        function divide(a,b) {
-            return a / b
-        }
 
-        function modulo(a,b) {
-            return a % b
-        }
+        //EFFACER
+        effacer.addEventListener('click', function () {
+            result.value = ''
+        })
+
+        //
     </script>
 </body>
 

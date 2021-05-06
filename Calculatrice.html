@@ -11,64 +11,45 @@
 
 <body>
     <div class="container text-center pt-5">
-        <div><input type="text" id="result" disabled></div>
-        <div><button type="button" class="btn btn-dark" data-type="numbers" data-number="1">1</button>
+
+        <div class="pb-2"><input type="text" id="result" disabled></div>
+
+        <div>
+            <button type="button" class="btn btn-dark" data-type="operator" data-operator="/" id="diviser">÷</button>
+            <button type="button" class="btn btn-dark" data-type="operator" data-operator="*" id="mutiplier">×</button>
+            <button type="button" class="btn btn-dark" data-type="operator" data-operator="+" id="plus">+</button>
+            <button type="button" class="btn btn-dark" data-type="operator" data-operator="-" id="minus">-</button></div>
+
+        <div>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="1">1</button>
             <button type="button" class="btn btn-dark" data-type="numbers" data-number="2">2</button>
             <button type="button" class="btn btn-dark" data-type="numbers" data-number="3">3</button>
-            <button type="button" class="btn btn-dark" data-type="numbers" data-number=".">,</button></div>
+            <button type="button" class="btn btn-dark" data-type="remove" data-remove="C" id="effacer">C</button>
+        </div>
 
-        <div><button type="button" class="btn btn-dark" data-type="operator" data-operator="+" id="plus">+</button>
-            <button type="button" class="btn btn-dark" data-type="operator" data-operator="-" id="minus">-</button>
-            <button type="button" class="btn btn-dark" data-type="remove" data-remove="C" id="effacer">CE</button>
+        <div><button type="button" class="btn btn-dark" data-type="numbers" data-number="4">4</button>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="5">5</button>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="6">6</button>
+            <button type="button" class="btn btn-dark" data-type="operator" data-operator="%" id="modulo">Mod</button>
+        </div>
+
+        <div><button type="button" class="btn btn-dark" data-type="numbers" data-number="7">7</button>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="8">8</button>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="9">9</button>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number=".">,</button>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-dark" data-type="numbers" data-number="0">0</button>
             <button type="button" class="btn btn-dark" data-type="egal" data-operator="=" id="egal">=</button></div>
+
+    </div>
 
 
 
     </div>
 
-    <script>
-        //CHIFFRES
-        const numbersButtons = document.querySelectorAll('button[data-type="numbers"]');
-        let myOperation;
-
-        numbersButtons.forEach(element => {
-            element.addEventListener('click', function () {
-                result.value += this.dataset.number
-            })
-        })
-
-        //OPERATEURS/RESULTAT
-        const operatorsButtons = document.querySelectorAll('button[data-type="operator"]');
-        console.log(operatorsButtons);
-
-        operatorsButtons.forEach(element => {
-            element.addEventListener('click', function () {
-                //result.value va stacker la valeur de nb1, result.value='' la supprime de l'input
-                myOperation = parseFloat(result.value) + this.dataset.operator
-                result.value = ''
-                console.log(myOperation)
-            })
-        })
-
-
-        egal.addEventListener('click', function () {
-
-            myOperation = myOperation + result.value;
-            myResult = eval(myOperation);
-            result.value = myResult
-        })
-
-        //     function plus (a,b){
-        //     a + b
-
-
-        //EFFACER
-        effacer.addEventListener('click', function () {
-            result.value = ''
-        })
-
-        //
-    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
